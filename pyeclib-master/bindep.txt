@@ -1,0 +1,20 @@
+# This is a cross-platform list tracking distribution packages needed by tests;
+# see http://docs.openstack.org/infra/bindep/ for additional information.
+
+build-essential [platform:dpkg]
+gcc [platform:rpm]
+make [platform:rpm]
+autoconf
+automake
+libtool
+# yasm exists everywhere but CentOS 7
+yasm [!platform:centos]
+liberasurecode-dev [platform:dpkg]
+# There's no library in CentOS 7 but Fedora and openSUSE have it.
+liberasurecode-devel [platform:rpm !platform:centos]
+python-dev [(platform:dpkg py27)]
+python3-dev [(platform:dpkg !py27)]
+python-devel [(platform:rpm py27)]
+python3-devel [(platform:rpm !py27)]
+zlib-devel [platform:rpm]
+zlib1g-dev [platform:dpkg]
