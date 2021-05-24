@@ -13,6 +13,9 @@ decoded = True	# Indicates whether the current message has been decoded. Default
 fragments = []	# The current fragments received
 time_of_last_message = 0
 
+# data collection
+successful = 0
+
 while True:
 	data, addr = sock.recvfrom(1024)
 	
@@ -34,6 +37,8 @@ while True:
 		message = ec_driver.decode(fragments)
 		print("MESSAGE RECEIVED: " + str(message))
 		decoded = True
+		successful += 1
+		print("successes: " + str(successful))
 	elif len(fragments) < K:
 		print("Accumulating message (" + str(len(fragments)) + "/" + str(K) + ")")
 	
